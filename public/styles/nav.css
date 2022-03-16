@@ -1,4 +1,7 @@
 .navbar-top {
+  position: fixed;
+  z-index: 10;
+  top: 0;
   background-color: #4056a1;
   color: #ffffff;
   padding: 0 1.5em;
