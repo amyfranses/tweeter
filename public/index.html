@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet-container.css" type="text/css" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -41,7 +42,7 @@
       </div>
     </nav>
 
-    <header>
+    <header class="header">
       <div class="profile-image">
         <img src="/images/profile-hex.png">
       </div>
@@ -63,6 +64,30 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <section class="tweet-container">
+        <article>
+          <header class="image-name-handle">
+            <div class="image-name">
+              <img ID="user-image" src="/images/avatar-image.png">
+              <div>Name</div>
+            </div>
+              
+            <div>@name</div> 
+          </header>  
+            <p class="tweet-text">Insert inspiring message here</p>
+            <hr>
+          <footer class="tweet-footer">   
+            <div>Days since post</div>
+            <div class="icons">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-flag"></i>
+            </div>       
+            
+          </footer>          
+        </article>
+
       </section>
     </main>
   </body>
