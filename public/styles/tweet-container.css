@@ -1,4 +1,4 @@
-.tweet-container {
+#tweet-container {
   margin-top: 1em;
   width: 100%;
   height: 20%;
@@ -7,11 +7,11 @@
   /* background: yellow; */
 }
 
-.tweet-container article:hover {
+#tweet-container article:hover {
   box-shadow: 5px 10px;
 }
 
-.tweet-container article {
+#tweet-container article {
   /* background: blue; */
   border: 3px solid rgb(85, 82, 82);
   padding: 1rem;
@@ -43,7 +43,7 @@
   margin: 20px 10px 0 10px;
 }
 
-.tweet-container hr {
+#tweet-container hr {
   border: 2px solid rgb(85, 82, 82);
 }
 
