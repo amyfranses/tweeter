@@ -27,8 +27,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/scripts/client.js" defer></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js" defer></script>
 
   </head>
 
@@ -56,7 +56,7 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST">
+        <form id="new-tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="button-counter">
@@ -66,7 +66,7 @@
         </form>
       </section>
       <section id="tweet-container">
-        <article>
+        <!-- <article>
           <header class="image-name-handle">
             <div class="image-name">
               <img class="user-image" src="/images/avatar-image.png">
@@ -86,7 +86,7 @@
             </div>       
             
           </footer>          
-        </article>
+        </article> -->
 
       </section>
     </main>
