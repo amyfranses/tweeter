@@ -53,7 +53,6 @@ function loadTweets() {
     dataType: "json",
     url: "/tweets",
     success: function (response) {
-      console.log(response);
       renderTweets(response);
     },
     error: (error) => console.log(error),
@@ -63,14 +62,23 @@ function loadTweets() {
 $(document).ready(() => {
   $("#new-tweet-form").on("submit", function (event) {
     event.preventDefault();
+    //  $("#error-message1").hide();
 
     const textinput = $("#tweet-text").val().trim().length;
 
     if (!textinput) {
-      return alert("Enter a tweet!");
+      $("#error-message").text("Error: Input is empty... Write a tweet!");
+      $("#error-message").slideDown("slow");
+      return setTimeout(() => {
+        $("#error-message").slideUp();
+      }, 2000);
     }
     if (textinput > 140) {
-      return alert("This tweet is too long!");
+      $("#error-message").text("Error: Tweet is too long!");
+      $("#error-message").slideDown("slow");
+      return setTimeout(() => {
+        $("#error-message").slideUp();
+      }, 2000);
     }
     $.ajax({
       method: "POST",
