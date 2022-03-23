@@ -3,6 +3,14 @@ form {
   width: 90%;
   margin-left: 5%;
 }
+#error-message {
+  color: red;
+  font-weight: 500;
+  border: 5px solid red;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
 
 .tweet-button {
   background-color: #4056a1;
