@@ -1,19 +1,20 @@
-function createTweetElement(tweetObject) {
-  let $tweet = tweetObject.content.text;
+function createTweetElement(tweetData) {
+  let $tweet = tweetData.content.text;
+  console.log(tweetData);
 
   const postedTweet = $(`
         <article class="tweet">
           <header class="image-name-handle">
             <div class="image-name">
-              <img class="user-image" src=${tweetObject.user.avatars}>
-              <div>${tweetObject.user.name}</div>
+              <img class="user-image" src=${tweetData.user.avatars}>
+              <div>${tweetData.user.name}</div>
             </div>   
-            <div>${tweetObject.user.handle}</div> 
+            <div>${tweetData.user.handle}</div> 
           </header>  
             <p class="tweet-text">${$tweet}</p>
             <hr>
           <footer class="tweet-footer">   
-            <div>${tweetObject.created_at}</div>
+            <div>${timeago.format(tweetData.created_at)}</div>
             <div class="icons">
               <i class="fa-solid fa-heart"></i>
               <i class="fa-solid fa-retweet"></i>
@@ -26,25 +27,25 @@ function createTweetElement(tweetObject) {
 }
 
 const renderTweets = function (tweets) {
-  // $("#tweet-container").empty();
+  $("#tweet-container").empty();
   for (let tweet of tweets) {
     $("#tweet-container").prepend(createTweetElement(tweet));
   }
 };
 
-const tweetObject = {
-  user: {
-    name: "Newton",
-    avatars: "https://i.imgur.com/73hZDYK.png",
-    handle: "@SirIsaac",
-  },
-  content: {
-    text: "If I have seen further it is by standing on the shoulders of giants",
-  },
-  created_at: 1461116232227,
-};
+// const tweetObject = {
+//   user: {
+//     name: "Newton",
+//     avatars: "https://i.imgur.com/73hZDYK.png",
+//     handle: "@SirIsaac",
+//   },
+//   content: {
+//     text: "If I have seen further it is by standing on the shoulders of giants",
+//   },
+//   created_at: 1461116232227,
+// };
 
-const $tweet = createTweetElement(tweetObject);
+// const $tweet = createTweetElement(tweetObject);
 
 function loadTweets() {
   $.ajax({
@@ -68,10 +69,9 @@ $(document).ready(() => {
       type: "application/json",
       data: $(this).serialize(),
       success: function () {
-        $("textarea").val("");
         $.get("/tweets", (response) => {
-          const lastTweet = [response.slice(-1).pop()];
-          renderTweets(lastTweet);
+          // const lastTweet = [response.slice(-1).pop()];
+          renderTweets(response);
         });
       },
     });
