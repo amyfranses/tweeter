@@ -1,6 +1,5 @@
 function createTweetElement(tweetData) {
   let $tweet = tweetData.content.text;
-  console.log(tweetData);
 
   const postedTweet = $(`
         <article class="tweet">
@@ -11,7 +10,7 @@ function createTweetElement(tweetData) {
             </div>   
             <div>${tweetData.user.handle}</div> 
           </header>  
-            <p class="tweet-text">${$tweet}</p>
+            <p class="tweet-text"></p>
             <hr>
           <footer class="tweet-footer">   
             <div>${timeago.format(tweetData.created_at)}</div>
@@ -23,6 +22,7 @@ function createTweetElement(tweetData) {
           </footer>   
           </article>       
      `);
+  postedTweet.children(".tweet-text").text($tweet);
   return postedTweet;
 }
 
@@ -53,6 +53,7 @@ function loadTweets() {
     dataType: "json",
     url: "/tweets",
     success: function (response) {
+      console.log(response);
       renderTweets(response);
     },
     error: (error) => console.log(error),
@@ -63,6 +64,14 @@ $(document).ready(() => {
   $("#new-tweet-form").on("submit", function (event) {
     event.preventDefault();
 
+    const textinput = $("#tweet-text").val().trim().length;
+
+    if (!textinput) {
+      return alert("Enter a tweet!");
+    }
+    if (textinput > 140) {
+      return alert("This tweet is too long!");
+    }
     $.ajax({
       method: "POST",
       url: "/tweets",
@@ -72,6 +81,8 @@ $(document).ready(() => {
         $.get("/tweets", (response) => {
           // const lastTweet = [response.slice(-1).pop()];
           renderTweets(response);
+          $("#new-tweet-form")[0].reset();
+          $(".counter").val(140);
         });
       },
     });
