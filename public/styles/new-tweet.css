@@ -5,7 +5,7 @@ form {
 }
 #error-message {
   color: red;
-  font-weight: 500;
+  font-weight: 700;
   border: 5px solid red;
   display: none;
   justify-content: center;

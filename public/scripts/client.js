@@ -69,31 +69,31 @@ $(document).ready(() => {
     if (!textinput) {
       $("#error-message").text("Error: Input is empty... Write a tweet!");
       $("#error-message").slideDown("slow");
-      return setTimeout(() => {
+      setTimeout(() => {
         $("#error-message").slideUp();
       }, 2000);
-    }
-    if (textinput > 140) {
+    } else if (textinput > 140) {
       $("#error-message").text("Error: Tweet is too long!");
       $("#error-message").slideDown("slow");
       return setTimeout(() => {
         $("#error-message").slideUp();
       }, 2000);
-    }
-    $.ajax({
-      method: "POST",
-      url: "/tweets",
-      type: "application/json",
-      data: $(this).serialize(),
-      success: function () {
-        $.get("/tweets", (response) => {
-          // const lastTweet = [response.slice(-1).pop()];
-          renderTweets(response);
-          $("#new-tweet-form")[0].reset();
-          $(".counter").val(140);
-        });
-      },
-    });
+    } else if (
+      $.ajax({
+        method: "POST",
+        url: "/tweets",
+        type: "application/json",
+        data: $(this).serialize(),
+        success: function () {
+          $.get("/tweets", (response) => {
+            // const lastTweet = [response.slice(-1).pop()];
+            renderTweets(response);
+            $("#new-tweet-form")[0].reset();
+            $(".counter").val(140);
+          });
+        },
+      })
+    );
   });
 
   loadTweets();

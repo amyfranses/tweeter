@@ -2,7 +2,6 @@ $(document).ready(function () {
   // --- our code goes here ---
 
   $("#tweet-text").on("input", function (event) {
-    // console.log(this);
     let tweet = $(this).val();
     // event.target.value;
     let remainder = 140 - tweet.length;
