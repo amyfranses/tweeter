@@ -3,7 +3,6 @@ $(document).ready(function () {
 
   $("#tweet-text").on("input", function (event) {
     let tweet = $(this).val();
-    // event.target.value;
     let remainder = 140 - tweet.length;
     const counter = $(".counter");
     counter.text(remainder).css("color", "black");
