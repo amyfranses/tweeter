@@ -8,7 +8,7 @@ Tweeter is built using HTML, CSS, JS, jQuery and AJAX for front-end skills pract
 
 <img width="1415" alt="Screen Shot 2022-03-30 at 12 26 41 PM" src="https://user-images.githubusercontent.com/75110673/160915232-6e124409-9388-44c7-a311-c8db096379a0.png">
 
-## Tweeter for smart phones of tablets
+## Tweeter for smart phones and tablets
 
 <img width="580" alt="Screen Shot 2022-03-30 at 12 26 55 PM" src="https://user-images.githubusercontent.com/75110673/160915263-0dd78926-95dd-4c3f-9f41-a76a7bf8a5ea.png">
 
