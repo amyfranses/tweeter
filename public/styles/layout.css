@@ -31,9 +31,34 @@ main {
   background-color: #f4f1ec;
   width: 90%;
   margin-left: 5%;
-  padding-top: 120px;
+  padding-top: 30px;
+  margin-top: 130px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
+}
+
+/*  smart phone / tablet styles */
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+  .media-queries {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1024px) {
+  .media-queries {
+    background-color: #f4f1ec;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 2rem 0.5rem 2rem;
+  }
+  .media-queries header {
+    flex: 0.4;
+  }
+
+  .media-queries main {
+    flex: 0.6;
+  }
 }
