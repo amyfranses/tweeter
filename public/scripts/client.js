@@ -1,7 +1,7 @@
-function createTweetElement(tweetData) {
-  let $tweet = tweetData.content.text;
-
-  const postedTweet = $(`
+$(document).ready(() => {
+  function createTweetElement(tweetData) {
+    // create tweetElement markup as jquery object
+    const tweetElement = $(`
         <article class="tweet">
           <header class="image-name-handle">
             <div class="image-name">
@@ -22,33 +22,32 @@ function createTweetElement(tweetData) {
           </footer>   
           </article>       
      `);
-  postedTweet.children(".tweet-text").text($tweet);
-  return postedTweet;
-}
 
-const renderTweets = function (tweets) {
-  $("#tweet-container").empty();
-  for (let tweet of tweets) {
-    $("#tweet-container").prepend(createTweetElement(tweet));
+    // creating text note out of tweet data to avoid cross scripting
+    tweetElement.children(".tweet-text").text(tweetData.content.text);
+    return tweetElement;
   }
-};
 
-function loadTweets() {
-  $.ajax({
-    method: "GET",
-    dataType: "json",
-    url: "/tweets",
-    success: function (response) {
-      renderTweets(response);
-    },
-    error: (error) => console.log(error),
-  });
-}
+  function renderTweets(tweets) {
+    $("#tweets-container").empty();
+    for (let tweet of tweets) {
+      $("#tweets-container").prepend(createTweetElement(tweet));
+    }
+  }
 
-$(document).ready(() => {
-  $("#new-tweet-form").on("submit", function (event) {
-    event.preventDefault();
+  function loadTweets() {
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: "/tweets",
+      success: function (response) {
+        renderTweets(response);
+      },
+      error: (error) => console.log(error),
+    });
+  }
 
+  function validTextInput() {
     const textinput = $("#tweet-text").val().trim().length;
 
     if (!textinput) {
@@ -57,13 +56,23 @@ $(document).ready(() => {
       setTimeout(() => {
         $("#error-message").slideUp();
       }, 2000);
+      return false;
     } else if (textinput > 140) {
       $("#error-message").text("Error: Tweet is too long!");
       $("#error-message").slideDown("slow");
-      return setTimeout(() => {
+      setTimeout(() => {
         $("#error-message").slideUp();
       }, 2000);
-    } else if (
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  $("#new-tweet-form").on("submit", function (event) {
+    event.preventDefault();
+
+    if (validTextInput()) {
       $.ajax({
         method: "POST",
         url: "/tweets",
@@ -76,8 +85,8 @@ $(document).ready(() => {
             $(".counter").val(140);
           });
         },
-      })
-    );
+      });
+    }
   });
 
   loadTweets();
