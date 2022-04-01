@@ -35,7 +35,12 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweet-container.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/styles/tweets-container.css"
+      type="text/css"
+    />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script
@@ -54,8 +59,8 @@
   </head>
 
   <body>
-    <!-- Top nav bar (fixed) -->
     <div class="nav-header-container">
+      <!-- Top nav bar (fixed) -->
       <nav class="navbar-top">
         <span class="navbar-brand">tweeter</span>
         <div class="navbar-menu">
@@ -64,6 +69,7 @@
         </div>
       </nav>
 
+      <!-- header component  -->
       <header class="header">
         <div class="profile-image">
           <img src="/images/profile-hex.png" />
@@ -89,8 +95,8 @@
             </div>
           </form>
         </section>
-        <section id="tweet-container">
-          <!-- artical section works dynamically in client.js -->
+        <section id="tweets-container">
+          <!-- articles section works dynamically in client.js -->
         </section>
       </main>
     </div>
