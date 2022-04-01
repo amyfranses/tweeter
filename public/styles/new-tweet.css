@@ -1,6 +1,6 @@
 form {
   background-color: #f4f1ec;
-  width: 100%;
+  width: 90%;
   margin-left: 5%;
   font-weight: 600;
 }
@@ -14,6 +14,19 @@ form {
   align-items: center;
 }
 
+.new-tweet {
+  width: 100%;
+}
+
+#tweet-text {
+  width: 100%;
+  height: 80px;
+  resize: none;
+  background-color: #f4f1ec;
+  border-style: none;
+  border-bottom: 1px solid #343a3f;
+}
+
 .tweet-button {
   background-color: #4056a1;
   color: #ffffff;
@@ -23,14 +36,6 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-textarea {
-  width: 100%;
-  line-height: 50%;
-  background-color: #f4f1ec;
-  border-style: none;
-  border-bottom: 1px solid #343a3f;
 }
 
 .button-counter {
